@@ -3,6 +3,8 @@ import axios from 'axios';
 import DefaultURL from '../common/common';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 export default function ProviderForm({ selectedProvider, onSuccess }) {
     const [formData, setFormData] = useState({
@@ -27,8 +29,16 @@ export default function ProviderForm({ selectedProvider, onSuccess }) {
         }));
     };
 
+
+    const phoneRegex = /^\d{4}-\d{4}$/;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!phoneRegex.test(formData.phone)) {
+            alert('El teléfono debe tener el formato 7777-7777');
+            return;
+        }
 
         if (selectedProvider) {
             await axios.put(`${DefaultURL.apiUrl}/providers/${selectedProvider.id}`, formData);
@@ -39,6 +49,7 @@ export default function ProviderForm({ selectedProvider, onSuccess }) {
         setFormData({ name: '', address: '', phone: '', description: '' });
         onSuccess();
     };
+
 
     return (
         <form
@@ -80,6 +91,9 @@ export default function ProviderForm({ selectedProvider, onSuccess }) {
                     value={formData.phone}
                     onChange={handleChange}
                     fullWidth
+                    placeholder="7777-7777"
+                    inputProps={{ maxLength: 9, pattern: "\\d{4}-\\d{4}" }}
+                    helperText="Formato: 7777-7777"
                 />
                 <TextField
                     style={{ padding: '10px' }}

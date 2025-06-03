@@ -5,6 +5,8 @@ import GroupIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Header from './Header';
+
 
 export default function Home() {
     const [value, setValue] = useState(0);
@@ -18,16 +20,18 @@ export default function Home() {
     };
 
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-orange-100 via-white to-orange-200">
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-12 py-16 flex flex-col items-center">
-                <div className="flex items-center gap-3 mb-6">
-                    <img src="https://img.icons8.com/color/96/orange.png" alt="OrangeBox Logo" className="w-16 h-16" />
-                    <h1 className="text-5xl font-extrabold text-orange-500 drop-shadow">OrangeBox</h1>
-                </div>
-                <p className="text-lg text-gray-600 mb-10 text-center max-w-md">
-                    Bienvenido a tu sistema de gestión de productos y proveedores.<br />
-                    Selecciona una opción para comenzar.
-                </p>
+        <>
+            <Header />
+            <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-orange-100 via-white to-orange-200">
+                <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-12 py-16 flex flex-col items-center">
+                    <div className="flex items-center gap-3 mb-6">
+                        <img src="https://img.icons8.com/color/96/orange.png" alt="OrangeBox Logo" className="w-16 h-16" />
+                        <h1 className="text-5xl font-extrabold text-orange-500 drop-shadow">OrangeBox</h1>
+                    </div>
+                    <p className="text-lg text-gray-600 mb-10 text-center max-w-md">
+                        Bienvenido a tu sistema de gestión de productos y proveedores.<br />
+                        Selecciona una opción para comenzar.
+                    </p>
                 <div className="flex justify-center w-full navigation-container mb-6">
                     <BottomNavigation
                         value={value}
@@ -42,5 +46,6 @@ export default function Home() {
                 </div>
             </div>
         </main>
+        </>
     );
 }

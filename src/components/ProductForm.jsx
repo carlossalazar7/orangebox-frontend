@@ -41,6 +41,7 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
     };
 
     return (
+
         <form
             onSubmit={handleSubmit}
             className="bg-white rounded-lg shadow p-6 mb-8 flex flex-col gap-4 w-full max-w-xl"
