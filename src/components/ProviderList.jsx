@@ -26,15 +26,30 @@ export default function ProviderList() {
   }, []);
 
   return (
-    <div>
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow">
       <ProviderForm selectedProvider={selected} onSuccess={fetchProviders} />
-      <h2>Lista de Proveedores</h2>
-      <ul>
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">Lista de Proveedores</h2>
+      <ul className="space-y-3">
         {providers.map(p => (
-          <li key={p.id}>
-            {p.name} - {p.address}
-            <button onClick={() => editProvider(p)}>Editar</button>
-            <button onClick={() => deleteProvider(p.id)}>Eliminar</button>
+          <li
+            key={p.id}
+            className="flex items-center justify-between bg-gray-50 p-4 rounded hover:bg-gray-100 transition"
+          >
+            <span className="text-gray-700">{p.name} - {p.address}</span>
+            <div className="space-x-2">
+              <button
+                onClick={() => editProvider(p)}
+                className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              >
+                Editar
+              </button>
+              <button
+                onClick={() => deleteProvider(p.id)}
+                className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+              >
+                Eliminar
+              </button>
+            </div>
           </li>
         ))}
       </ul>

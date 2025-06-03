@@ -1,4 +1,4 @@
 const DefaultURL = {
-    apiUrl: 'http://localhost:3000',
+    apiUrl: 'https://orangebox-backend.onrender.com',
 }
 export default DefaultURL;
