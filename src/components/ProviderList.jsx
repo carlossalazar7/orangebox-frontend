@@ -3,10 +3,12 @@ import axios from 'axios';
 import DefaultURL from '../common/common';
 import { useNavigate } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
+import TextField from '@mui/material/TextField';
 
 export default function ProviderList() {
   const [providers, setProviders] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
   const fetchProviders = async () => {
@@ -56,6 +58,14 @@ export default function ProviderList() {
     },
   ];
 
+  // Filtrar proveedores por nombre, dirección o teléfono
+  const filteredProviders = providers.filter(
+    (p) =>
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      (p.address && p.address.toLowerCase().includes(search.toLowerCase())) ||
+      (p.phone && p.phone.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
     <div className="max-w-4xl mx-auto bg-white rounded shadow provider-list p-6">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Lista de Proveedores</h2>
@@ -73,10 +83,23 @@ export default function ProviderList() {
           + Nuevo Proveedor
         </button>
       </div>
+      <div className="mb-4">
+        <TextField
+          id="filled-search"
+          label="Buscar proveedor..."
+          type="search"
+          variant="outlined"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="w-full md:w-1/2"
+          InputProps={{
+            className: "rounded focus:ring-2 focus:ring-orange-400"
+          }}
+        />
+      </div>
       <div style={{ height: 400, width: 800 }}>
         <DataGrid
-        style={{ width: '100%' }}
-          rows={providers}
+          rows={filteredProviders}
           columns={columns}
           pageSize={5}
           checkboxSelection

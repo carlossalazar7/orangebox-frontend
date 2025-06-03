@@ -3,9 +3,11 @@ import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import DefaultURL from '../common/common';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
@@ -49,6 +51,12 @@ export default function ProductList() {
     },
   ];
 
+  const filteredProducts = products.filter(
+    (p) =>
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      (p.description && p.description.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
     <div className="max-w-4xl mx-auto mt-8 px-6 py-8 bg-white rounded-2xl shadow-md">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Gestión de Productos</h1>
@@ -66,9 +74,24 @@ export default function ProductList() {
           + Nuevo Producto
         </button>
       </div>
+      <div className="mb-4 flex justify-end">
+        <TextField
+          style={{ margin: '8px 0' }}
+          id="outlined-search"
+          label="Buscar producto..."
+          type="search"
+          variant="outlined"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="w-full md:w-1/2"
+          InputProps={{
+            className: "rounded focus:ring-2 focus:ring-orange-400"
+          }}
+        />
+      </div>
       <div style={{ height: 400, width: 800 }}>
         <DataGrid
-          rows={products}
+          rows={filteredProducts}
           columns={columns}
           pageSize={5}
           checkboxSelection
