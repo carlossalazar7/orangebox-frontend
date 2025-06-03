@@ -50,7 +50,7 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
                 {selectedProduct ? 'Editar Producto' : 'Nuevo Producto'}
             </h3>
             <div className="space-y-4">
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="name"
                     name="name"
@@ -58,10 +58,12 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
                     variant="outlined"
                     value={formData.name}
                     onChange={handleChange}
+                    className='input-form'
+                    placeholder="Nombre"
                     required
                     fullWidth
                 />
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="price"
                     name="price"
@@ -70,10 +72,12 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
                     variant="outlined"
                     value={formData.price}
                     onChange={handleChange}
+                    className='input-form'
+                    placeholder='Precio'
                     required
                     fullWidth
                 />
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="description"
                     name="description"
@@ -81,9 +85,11 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
                     variant="outlined"
                     value={formData.description}
                     onChange={handleChange}
+                    className='input-form'
+                    placeholder='Descripción'
                     fullWidth
                 />
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="providerId"
                     name="providerId"
@@ -92,6 +98,8 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
                     variant="outlined"
                     value={formData.providerId}
                     onChange={handleChange}
+                    className='input-form'
+                    placeholder='ID del proveedor'
                     fullWidth
                 />
             </div>
@@ -99,7 +107,7 @@ export default function ProductForm({ selectedProduct, onSuccess }) {
                 type="submit"
                 variant="contained"
                 color="warning"
-                className="mt-2 font-semibold"
+                className="mt-2 font-semibold btn-add"
                 sx={{ mt: 2 }}
             >
                 {selectedProduct ? 'Actualizar' : 'Crear'}

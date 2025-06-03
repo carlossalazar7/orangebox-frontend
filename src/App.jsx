@@ -23,7 +23,7 @@ export default function App() {
         <Route path="/products/create" element={<ProductCreatePage />} />
         <Route path="/products/edit/:id" element={<ProductEditPage />} />
       </Routes>
-        <ToastContainer position="top-center" autoClose={2000} />-
+        <ToastContainer position="top-center" autoClose={2000} />
     </Router>
   );
 }

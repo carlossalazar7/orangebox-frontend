@@ -60,29 +60,31 @@ export default function ProviderForm({ selectedProvider, onSuccess }) {
                 {selectedProvider ? 'Editar Proveedor' : 'Nuevo Proveedor'}
             </h3>
             <div className="space-y-4">
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="name"
                     name="name"
-                    label="Nombre"
+                    placeholder="Nombre"
                     variant="outlined"
                     value={formData.name}
                     onChange={handleChange}
+                    className='input-form'
                     required
                     fullWidth
                 />
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="address"
                     name="address"
-                    label="Dirección"
+                    placeholder="Dirección"
                     variant="outlined"
                     value={formData.address}
                     onChange={handleChange}
+                    className='input-form'
                     required
                     fullWidth
                 />
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="phone"
                     name="phone"
@@ -90,19 +92,21 @@ export default function ProviderForm({ selectedProvider, onSuccess }) {
                     variant="outlined"
                     value={formData.phone}
                     onChange={handleChange}
+                    className='input-form'
                     fullWidth
                     placeholder="7777-7777"
                     inputProps={{ maxLength: 9, pattern: "\\d{4}-\\d{4}" }}
                     helperText="Formato: 7777-7777"
                 />
-                <TextField
+                <input
                     style={{ padding: '10px' }}
                     id="description"
                     name="description"
-                    label="Descripción"
+                    placeholder="Descripción"
                     variant="outlined"
                     value={formData.description}
                     onChange={handleChange}
+                    className='input-form'
                     fullWidth
                 />
             </div>
@@ -110,7 +114,7 @@ export default function ProviderForm({ selectedProvider, onSuccess }) {
                 type="submit"
                 variant="contained"
                 color="warning"
-                className="mt-2 font-semibold"
+                className="mt-2 font-semibold btn-add"
                 sx={{ mt: 2 }}
             >
                 {selectedProvider ? 'Actualizar' : 'Crear'}

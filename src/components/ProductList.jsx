@@ -40,7 +40,7 @@ export default function ProductList() {
         <div className="flex gap-2">
           <button
             onClick={() => navigate(`/products/edit/${params.row.id}`)}
-            className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+            className="btn-table"
           >
             ✏️ Editar
           </button>
@@ -67,33 +67,33 @@ export default function ProductList() {
       <div className="flex justify-between items-center mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition"
+          className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition btn-nav"
         >
           ← Regresar
         </button>
         <button
           onClick={() => navigate('/products/create')}
-          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
+          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition btn-nav"
         >
           + Nuevo Producto
         </button>
       </div>
       <div className="mb-4 flex justify-end">
-        <TextField
-          style={{ margin: '8px 0' }}
+        <input
           id="outlined-search"
-          label="Buscar producto..."
           type="search"
           variant="outlined"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full md:w-1/2"
+          className="input-search"
+          placeholder='Buscar producto...'
           InputProps={{
             className: "rounded focus:ring-2 focus:ring-orange-400"
           }}
         />
       </div>
-      <div style={{ height: 400, width: 800 }}>
+      <div className="table-mobile">
+      <div style={{ minWidth: "800px" }}>
         <DataGrid
           rows={filteredProducts}
           columns={columns}
@@ -105,6 +105,7 @@ export default function ProductList() {
             noRowsLabel: 'No hay productos registrados aún.',
           }}
         />
+      </div>
       </div>
     </div>
   );
