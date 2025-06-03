@@ -4,6 +4,8 @@ import ProvidersPage from './pages/ProvidersPage';
 import ProviderCreatePage from './pages/ProviderCreatePage';
 import Home from './components/Home';
 import ProviderEditPage from './pages/ProviderEditPage';
+import ProductEditPage from './pages/ProductEditPage';
+import ProductCreatePage from './pages/ProductCreatePage';
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
         <Route path="/providers" element={<ProvidersPage />} />
         <Route path="/providers/create" element={<ProviderCreatePage />} />
         <Route path="/providers/edit/:id" element={<ProviderEditPage />} />
+        <Route path="/products/create" element={<ProductCreatePage />} />
+        <Route path="/products/edit/:id" element={<ProductEditPage />} />
       </Routes>
     </Router>
   );
