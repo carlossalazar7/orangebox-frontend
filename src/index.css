@@ -78,3 +78,21 @@ button:focus-visible {
   display: flex;
   flex-wrap: wrap;
 }
+
+.from-orange-100{
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1em;
+}
+
+.navigation-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.products-container{
+  padding: 5px;
+}
