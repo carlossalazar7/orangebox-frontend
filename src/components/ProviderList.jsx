@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import DefaultURL from '../common/common';
+import DefaultURL from '../common/DefaultURL';
 import { useNavigate } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import TextField from '@mui/material/TextField';

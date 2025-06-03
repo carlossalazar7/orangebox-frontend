@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import DefaultURL from '../common/common';
+import DefaultURL from '../common/DefaultURL';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 

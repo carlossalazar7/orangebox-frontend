@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProductForm from '../components/ProductForm';
 import axios from 'axios';
-import DefaultURL from '../common/common';
+import DefaultURL from '../common/DefaultURL';
 import { toast } from 'react-toastify';
 
 export default function ProductEditPage() {
