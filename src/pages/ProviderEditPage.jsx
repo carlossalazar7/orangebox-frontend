@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ProviderForm from '../components/ProviderForm';
 import axios from 'axios';
 import DefaultURL from '../common/common';
+import { toast } from 'react-toastify';
 
 export default function ProviderEditPage() {
   const { id } = useParams();
@@ -29,7 +30,10 @@ export default function ProviderEditPage() {
         {selectedProvider && (
           <ProviderForm
             selectedProvider={selectedProvider}
-            onSuccess={() => navigate('/providers')}
+            onSuccess={() => {
+              toast.success('Proveedor actualizado exitosamente');
+              setTimeout(() => navigate('/providers'), 2000);
+            }}
           />
         )}
       </div>

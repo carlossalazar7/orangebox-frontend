@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ProductForm from '../components/ProductForm';
 import axios from 'axios';
 import DefaultURL from '../common/common';
+import { toast } from 'react-toastify';
 
 export default function ProductEditPage() {
   const { id } = useParams();
@@ -29,7 +30,10 @@ export default function ProductEditPage() {
         {selectedProduct && (
           <ProductForm
             selectedProduct={selectedProduct}
-            onSuccess={() => navigate('/products')}
+            onSuccess={() => {
+              toast.success('Producto actualizado exitosamente');
+              setTimeout(() => navigate('/products'), 2000);
+            }}
           />
         )}
       </div>

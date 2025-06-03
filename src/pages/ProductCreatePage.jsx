@@ -1,5 +1,6 @@
 import ProductForm from '../components/ProductForm';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function ProductCreatePage() {
   const navigate = useNavigate();
@@ -12,7 +13,12 @@ export default function ProductCreatePage() {
         >
           ← Regresar
         </button>
-        <ProductForm onSuccess={() => navigate('/products')} />
+        <ProductForm
+          onSuccess={() => {
+            toast.success('Producto creado exitosamente');
+            setTimeout(() => navigate('/products'), 2000);
+          }}
+        />
       </div>
     </div>
   );

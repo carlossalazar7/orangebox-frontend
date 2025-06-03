@@ -4,6 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import DefaultURL from '../common/common';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
+import { toast } from 'react-toastify';
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -16,7 +17,10 @@ export default function ProductList() {
   };
 
   const deleteProduct = async (id) => {
+    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este producto?');
+    if (!confirmDelete) return;
     await axios.delete(`${DefaultURL.apiUrl}/products/${id}`);
+    toast.success('Producto eliminado exitosamente');
     fetchProducts();
   };
 

@@ -4,6 +4,7 @@ import DefaultURL from '../common/common';
 import { useNavigate } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import TextField from '@mui/material/TextField';
+import { toast } from 'react-toastify';
 
 export default function ProviderList() {
   const [providers, setProviders] = useState([]);
@@ -17,7 +18,10 @@ export default function ProviderList() {
   };
 
   const deleteProvider = async (id) => {
+    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este proveedor?');
+    if (!confirmDelete) return;
     await axios.delete(`${DefaultURL.apiUrl}/providers/${id}`);
+    toast.success('Proveedor eliminado exitosamente');
     fetchProviders();
   };
 

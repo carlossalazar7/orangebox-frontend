@@ -1,5 +1,6 @@
 import ProviderForm from '../components/ProviderForm';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function ProviderCreatePage() {
   const navigate = useNavigate();
@@ -12,7 +13,12 @@ export default function ProviderCreatePage() {
         >
           ← Regresar
         </button>
-        <ProviderForm onSuccess={() => navigate('/providers')} />
+        <ProviderForm
+          onSuccess={() => {
+            toast.success('Proveedor creado exitosamente');
+            setTimeout(() => navigate('/providers'), 2000);
+          }}
+        />
       </div>
     </div>
   );
