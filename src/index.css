@@ -269,3 +269,13 @@ body {
   background: var(--bg);
   color: var(--text);
 }
+
+.border-theme{
+  border: 1px solid var(--text);
+}
+
+.container-header{
+  padding: 0 1rem ;
+  display: flex;
+  margin: 0 2rem ;
+}
